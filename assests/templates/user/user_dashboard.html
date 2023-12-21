@@ -1,0 +1,436 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   <!-- Title -->
+   <title>Credit  &amp; Card</title>
+
+   <!-- Favicon -->
+   <link rel="icon" href="{% static 'main/img/core-img/favicon.ico' %}">
+
+   <!-- Stylesheet -->
+   <link rel="stylesheet" href="{% static 'main/style.css' %}">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <style>
+   
+    .order-card {
+        color: #fff;
+    }
+    
+    .bg-c-blue {
+        background: linear-gradient(45deg,#4099ff,#73b4ff);
+    }
+    
+    .bg-c-green {
+        background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+    }
+    
+    .bg-c-yellow {
+        background: linear-gradient(45deg,#FFB64D,#ffcb80);
+    }
+    
+    .bg-c-pink {
+        background: linear-gradient(45deg,#FF5370,#ff869a);
+    }
+    
+    
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .card .card-block {
+        padding: 25px;
+    }
+    
+    .order-card i {
+        font-size: 26px;
+    }
+    
+    .f-left {
+        float: left;
+    }
+    
+    .f-right {
+        float: right;
+    }
+    
+    .text-right {
+        font-size: 20px;
+        color:#003679;
+    }
+   </style>
+   
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index.html"><img src="{% static 'main/img/core-img/logo.png' %}" alt=""></a>
+                        </div>
+
+                        <!-- Top Contact Info -->
+                        <div class="top-contact-info d-flex align-items-center">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="25 th Street Avenue, Los Angeles, CA"><img src="{% static 'main/img/core-img/placeholder.png' %}" alt=""> <span>Our location
+                                Hyderabad</span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="office@yourfirm.com"><img src="{% static 'main/img/core-img/message.png' %}" alt=""> <span>info@codebook.in</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="credit-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="creditNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="contact">
+                                <a href="#"><img src="{% static 'main/img/core-img/call2.png' %}" alt="">+91 8555 8879 86</a>
+                            </div>
+                            <!-- Nav Start -->
+
+                            <!-- Nav End -->
+                        </div>
+                        <div class="classynav">
+                            <ul>
+                                <ul>
+                                    <li><a href="{% url 'user_dashboard' %}"><i class="fa fa-dashboard" aria-hidden="true"></i>Dashboard</a></li>
+                                    <li><a href="{% url 'user_predict' %}"><i class="fa fa-credit-card" aria-hidden="true"></i><i class="fa fa-chart-line" aria-hidden="true"></i> CC Fraud Prediction</a></li>
+
+                                    <li><a href="{% url 'user_profile' %}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                                    <li><a href="{% url 'user_feedback' %}"><i class="fa fa-star" aria-hidden="true"></i>Feedback</a></li>
+                                    <li><a href="{% url 'user_login' %}">Logout</a></li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <!-- Contact -->
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <div class="container" style="padding-top:100px">
+        <div class="row">
+            <div class="col-md-4 col-xl-3">
+                <div class="card  order-card shadow">
+                    <div class="card-block">
+                        <h6 class="m-b-20" style="color:#28a745;">No.of times Login</h6>
+                        <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{la.No_Of_Times_Login}}</span></h2>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-xl-3">
+                <div class="card  order-card shadow">
+                    <div class="card-block">
+                        <h6 class="m-b-10"style="color:#28a745;">Last Login Time </h6>
+                        <h2 class="text-right"><i class="fa fa-clock-o f-left"></i><span>{{la.Last_Login_Time}}</span></h2>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-xl-3">
+                <div class="card  order-card shadow">
+                    <div class="card-block">
+                        <h6 class="m-b-20"style="color:#28a745;">Last Login Date</h6>
+                        <h2 class="text-right">
+                            <i class="fa fa-calendar f-left"></i>
+                            <span>{{la.Last_Login_Date}}</span>
+                        </h2>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-xl-3">
+                <div class="card  order-card shadow">
+                    <div class="card-block">
+                        <h6 class="m-b-20"style="color:#28a745;">No.of Predictions</h6>
+                        <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>{{predictions}}</span></h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Special Feature Area Start ###### -->
+    <section class="special-feature-area d-flex flex-wrap">
+        <!-- Special Feature Content -->
+        <div class="special-feature-content section-padding-50">
+            <div class="feature-text">
+                <!-- Section Heading -->
+                <div class="section-heading white mb-10">
+                    <div class="line"></div>
+                    <p>Bold desing and beyound</p>
+                    <h2>Easy and Fast credits</h2>
+                </div>
+                <h6>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem. Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sod ales. Maecenas sed magna tempor, efficitur maur is in, sollicitudin augue. Praesent pretium finibus quam.</h6>
+                <a href="#" class="btn credit-btn btn-2 box-shadow">Read More</a>
+            </div>
+        </div>
+        <!-- Special Feature Thumbnail -->
+        <div class="special-feature-thumbnail bg-img jarallax"><img src="{% static 'main/img/bg-img/20.jpg' %}" alt="" style="height:450px; width:900px;"></div>
+    </section>
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### Special Feature Area Start ###### -->
+   
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### FAQ Area Start ###### -->
+    
+
+    <!-- ##### Newsletter Area Start ###### -->
+    <section class="newsletter-area section-padding-100 bg-img jarallax" style="background-image: url(img/bg-img/6.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="nl-content text-center">
+                        <h2>Subscribe to our newsletter</h2>
+                        <form action="#" method="post">
+                            <input type="email" name="nl-email" id="nlemail" placeholder="Your e-mail">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <p>Curabitur elit turpis, maximus quis ullamcorper sed, maximus eu neque. Cras ultrices erat nec auctor blandit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Newsletter Area End ###### -->
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">About Us</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services &amp; Offers</a></li>
+                            <li><a href="#">Portfolio Presentation</a></li>
+                            <li><a href="#">The News</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Solutions</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our Cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Our Loans</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Latest News</h5>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/7.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">How to get the best Credit card?</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/8.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">A new way to get a Credit card</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/9.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">Finance you home</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copywrite-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copywrite-content d-flex flex-wrap justify-content-between align-items-center">
+                        <!-- Footer Logo -->
+                        <a href="index.html" class="footer-logo"><img src="{%static 'main/img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by  Codebook.in<i class="fa fa-heart-o" aria-hidden="true"></i> 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="{% static 'main/js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{% static 'main/js/bootstrap/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{% static 'main/js/bootstrap/bootstrap.min.js' %}"></script>
+<!-- All Plugins js -->
+<script src="{% static 'main/js/plugins/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{% static 'main/js/active.js' %}"></script>
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+        title: "Success!",
+        text: "{{message}}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>swal({
+        title: "Warning :)",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+     
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>swal({
+        title: "info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+        title: "error :)",
+        text: "{{message}}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>

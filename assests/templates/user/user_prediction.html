@@ -1,0 +1,482 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   <!-- Title -->
+   <title>Credit  &amp; Card</title>
+
+   <!-- Favicon -->
+   <link rel="icon" href="{% static 'main/img/core-img/favicon.ico' %}">
+
+   <!-- Stylesheet -->
+   <link rel="stylesheet" href="{% static 'main/style.css' %}">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <style>
+    .bg-image-vertical {
+        position: relative;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: auto 100%;
+        }
+        
+        @media (min-width: 1025px) {
+        .h-custom-2 {
+        height: 100%;
+        }
+        }
+
+   </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index.html"><img src="{% static 'main/img/core-img/logo.png' %}" alt=""></a>
+                        </div>
+
+                        <!-- Top Contact Info -->
+                        <div class="top-contact-info d-flex align-items-center">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="25 th Street Avenue, Los Angeles, CA"><img src="{% static 'main/img/core-img/placeholder.png' %}" alt=""> <span>Our location
+                                Hyderabad</span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="office@yourfirm.com"><img src="{% static 'main/img/core-img/message.png' %}" alt=""> <span>info@codebook.in</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="credit-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="creditNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="contact">
+                                <a href="#"><img src="{% static 'main/img/core-img/call2.png' %}" alt="">+91 8555 8879 86</a>
+                            </div>
+                            <!-- Nav Start -->
+
+                            <!-- Nav End -->
+                        </div>
+                        <div class="classynav">
+                            <ul>
+                                <ul>
+                                    <li><a href="{% url 'user_dashboard' %}"><i class="fa fa-dashboard" aria-hidden="true"></i>Dashboard</a></li>
+                                    <li><a href="{% url 'user_predict' %}"><i class="fa fa-credit-card" aria-hidden="true"></i><i class="fa fa-chart-line" aria-hidden="true"></i> CC Fraud Prediction</a></li>
+
+                                    <li><a href="{% url 'user_profile' %}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                                    <li><a href="{% url 'user_feedback' %}"><i class="fa fa-star" aria-hidden="true"></i>Feedback</a></li>
+                                    <li><a href="{% url 'user_login' %}">Logout</a></li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <!-- Contact -->
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    
+    <!-- ##### Breadcrumb Area End ##### -->
+    <section class="vh-60">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6 text-black">
+      
+              <div class="px-5 ms-xl-4">
+                <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                <span class="h1 fw-bold mb-0" style="color:#003679;margin-left:50px;">CC Fraud Prediction</span>
+              </div>
+      
+              <div class="d-flex align-items-center  px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+      
+                <form method = 'post' enctype = 'multipart/form-data'id="form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="age">Age</label>
+                                <input type="text" class="form-control" name="age" id="age" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="gender">Gender</label>
+                                <select class="form-control" name="gender" id="gender">
+                                    <option value="">Select gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="category">category
+                                </label>
+                                <select class="form-control" name="category" id="category" placeholder="">
+                                    <option value="">Select category</option>
+                                    <option value="2">Gas/Transport</option>
+                                    <option value="4">Grocery (POS)</option>
+                                    <option value="6">Home</option>
+                                    <option value="12">Shopping (POS)</option>
+                                    <option value="7">Kids/Pets</option>
+                                    <option value="11">Shopping (Online)</option>
+                                    <option value="0">Entertainment</option>
+                                    <option value="1">Food/Dining</option>
+                                    <option value="10">Personal Care</option>
+                                    <option value="5">Health/Fitness</option>
+                                    <option value="9">Miscellaneous (POS)</option>
+                                    <option value="8">Miscellaneous (Online)</option>
+                                    <option value="3">Grocery (Online)</option>
+                                    <option value="13">Travel</option>
+                                </select>
+                                
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="T3">amt
+                                </label>
+                                <input type="amt" class="form-control" name="amt" id="amt" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="trans_month">trans_month
+                                </label>
+                                <input type="trans_month" class="form-control" name="trans_month" id="trans_month" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="trans_year">trans_year
+                                </label>
+                                <input type="trans_year" class="form-control" name="trans_year" id="trans_year" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="lat_dis">User-lat_dis
+                                </label>
+                                <input type="lat_dis" class="form-control" name="lat_dis" id="lat_dis" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="TSH">User-long_dis
+                                </label>
+                                <input type="long_dis" class="form-control" name="long_dis" id="long_dis" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="lat_dis">merch_lat_dis
+
+                                </label>
+                                <input type="lat_dis" class="form-control" name="merch_lat_dis" id="lat_dis" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="TSH">merch_long_dis
+
+                                </label>
+                                <input type="long_dis" class="form-control" name="merch_long_dis" id="long_dis" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center" style="padding-top:30px;">
+                            <div class="form-group text-center">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                                <div class="submitting"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                
+      
+              </div>
+      
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+              <img src="{% static 'main/img/Capture2.PNG' %}"
+                alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left; height:600px;">
+            </div>
+          </div>
+        </div>
+    </section>
+  
+   
+
+    <!-- ##### Special Feature Area Start ###### -->
+    <section class="special-feature-area d-flex flex-wrap">
+        <!-- Special Feature Content -->
+        <div class="special-feature-content section-padding-50">
+            <div class="feature-text">
+                <!-- Section Heading -->
+                <div class="section-heading white mb-10">
+                    <div class="line"></div>
+                    <p>Bold desing and beyound</p>
+                    <h2>Easy and Fast credits</h2>
+                </div>
+                <h6>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem. Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sod ales. Maecenas sed magna tempor, efficitur maur is in, sollicitudin augue. Praesent pretium finibus quam.</h6>
+                <a href="#" class="btn credit-btn btn-2 box-shadow">Read More</a>
+            </div>
+        </div>
+        <!-- Special Feature Thumbnail -->
+        <div class="special-feature-thumbnail bg-img jarallax"><img src="{% static 'main/img/bg-img/20.jpg' %}" alt="" style="height:450px; width:900px;"></div>
+    </section>
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### Special Feature Area Start ###### -->
+   
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### FAQ Area Start ###### -->
+    
+
+    <!-- ##### Newsletter Area Start ###### -->
+    <section class="newsletter-area section-padding-100 bg-img jarallax" style="background-image: url(img/bg-img/6.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="nl-content text-center">
+                        <h2>Subscribe to our newsletter</h2>
+                        <form action="#" method="post">
+                            <input type="email" name="nl-email" id="nlemail" placeholder="Your e-mail">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <p>Curabitur elit turpis, maximus quis ullamcorper sed, maximus eu neque. Cras ultrices erat nec auctor blandit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Newsletter Area End ###### -->
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">About Us</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services &amp; Offers</a></li>
+                            <li><a href="#">Portfolio Presentation</a></li>
+                            <li><a href="#">The News</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Solutions</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our Cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Our Loans</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Latest News</h5>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/7.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">How to get the best Credit card?</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/8.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">A new way to get a Credit card</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/9.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">Finance you home</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copywrite-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copywrite-content d-flex flex-wrap justify-content-between align-items-center">
+                        <!-- Footer Logo -->
+                        <a href="index.html" class="footer-logo"><img src="{%static 'main/img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by  Codebook.in<i class="fa fa-heart-o" aria-hidden="true"></i> 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="{% static 'main/js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{% static 'main/js/bootstrap/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{% static 'main/js/bootstrap/bootstrap.min.js' %}"></script>
+<!-- All Plugins js -->
+<script src="{% static 'main/js/plugins/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{% static 'main/js/active.js' %}"></script>
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+        title: "Success!",
+        text: "{{message}}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>swal({
+        title: "Warning :)",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+     
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>swal({
+        title: "info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+        title: "error :)",
+        text: "{{message}}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>

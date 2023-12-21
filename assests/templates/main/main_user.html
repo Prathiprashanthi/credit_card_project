@@ -1,0 +1,405 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   <!-- Title -->
+   <title>Credit  &amp; Card</title>
+
+   <!-- Favicon -->
+   <link rel="icon" href="{% static 'main/img/core-img/favicon.ico' %}">
+
+   <!-- Stylesheet -->
+   <link rel="stylesheet" href="{% static 'main/style.css' %}">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <style>
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+    .h-custom {
+    height: calc(100% - 73px);
+    }
+    @media (max-width: 450px) {
+    .h-custom {
+    height: 100%;
+    }
+    }
+   </style>
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index.html"><img src="{% static 'main/img/core-img/logo.png' %}" alt=""></a>
+                        </div>
+
+                        <!-- Top Contact Info -->
+                        <div class="top-contact-info d-flex align-items-center">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="25 th Street Avenue, Los Angeles, CA"><img src="{% static 'main/img/core-img/placeholder.png' %}" alt=""> <span>Our location
+                                Hyderabad</span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="office@yourfirm.com"><img src="{% static 'main/img/core-img/message.png' %}" alt=""> <span>info@codebook.in</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="credit-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="creditNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <ul>
+                                      <li><a href="{% url 'main_home' %}">Home</a></li>
+                                      <li><a href="{% url 'user_login' %}">User</a></li>
+                                      <li><a href="{% url 'admin_login' %}">Admin</a></li>
+                                      <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                                      <li><a href="{% url 'contactus' %}">Contact</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="contact">
+                            <a href="#"><img src="{% static 'main/img/core-img/call2.png' %}" alt="">+91 8555 8879 86</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+   
+    <!-- ##### Breadcrumb Area End ##### -->
+    <section class="vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form method="POST"  enctype="multipart/form-data" name='myform'>
+              {% csrf_token %}
+              
+    
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0" style="color:#003679;font-size: 44px;">User Login</p>
+              </div>
+    
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="form3Example3"  name="Email" class="form-control form-control-lg"
+                  placeholder="Enter a valid email address" />
+                <label class="form-label" for="form3Example3">Email address</label>
+              </div>
+    
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <input type="password" id="form3Example4" name="password" class="form-control form-control-lg"
+                  placeholder="Enter password" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+    
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-0"style="color:#003679;">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                  <label class="form-check-label" style="color:#003679;" for="form2Example3">
+                    Remember me
+                  </label>
+                </div>
+                <a href="{% url 'forgot_password' %}" class="text-body">Forgot password?</a>
+              </div>
+    
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button class="btn btn-primary" style="width:100px;">Login</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{% url 'register' %}"
+                    class="link-danger"style="color:#003679;">Register</a></p>
+              </div>
+    
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- ##### Special Feature Area Start ###### -->
+    <section class="special-feature-area d-flex flex-wrap">
+        <!-- Special Feature Content -->
+        <div class="special-feature-content section-padding-50">
+            <div class="feature-text">
+                <!-- Section Heading -->
+                <div class="section-heading white mb-10">
+                    <div class="line"></div>
+                    <p>Bold desing and beyound</p>
+                    <h2>Easy and Fast credits</h2>
+                </div>
+                <h6>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem. Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sod ales. Maecenas sed magna tempor, efficitur maur is in, sollicitudin augue. Praesent pretium finibus quam.</h6>
+                <a href="#" class="btn credit-btn btn-2 box-shadow">Read More</a>
+            </div>
+        </div>
+        <!-- Special Feature Thumbnail -->
+        <div class="special-feature-thumbnail bg-img jarallax"><img src="{% static 'main/img/bg-img/20.jpg' %}" alt="" style="height:450px; width:900px;"></div>
+    </section>
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### Special Feature Area Start ###### -->
+   
+    <!-- ##### Special Feature Area End ###### -->
+
+    <!-- ##### FAQ Area Start ###### -->
+    
+
+    <!-- ##### Newsletter Area Start ###### -->
+    <section class="newsletter-area section-padding-100 bg-img jarallax" style="background-image: url(img/bg-img/6.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="nl-content text-center">
+                        <h2>Subscribe to our newsletter</h2>
+                        <form action="#" method="post">
+                            <input type="email" name="nl-email" id="nlemail" placeholder="Your e-mail">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <p>Curabitur elit turpis, maximus quis ullamcorper sed, maximus eu neque. Cras ultrices erat nec auctor blandit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Newsletter Area End ###### -->
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">About Us</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services &amp; Offers</a></li>
+                            <li><a href="#">Portfolio Presentation</a></li>
+                            <li><a href="#">The News</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Solutions</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our Cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Our Loans</h5>
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Our cards</a></li>
+                            <li><a href="#">Trading &amp; Commerce</a></li>
+                            <li><a href="#">Banking &amp; Private Equity</a></li>
+                            <li><a href="#">Industrial &amp; Factory</a></li>
+                            <li><a href="#">Financial Solutions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-100">
+                    <h5 class="widget-title">Latest News</h5>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/7.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">How to get the best Credit card?</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/8.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">A new way to get a Credit card</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single News Area -->
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-thumbnail">
+                            <img src="{% static 'main/img/bg-img/9.jpg' %}" alt="">
+                        </div>
+                        <div class="news-content">
+                            <a href="#">Finance you home</a>
+                            <div class="news-meta">
+                                <a href="#" class="post-author"><img src="{% static 'main/img/core-img/pencil.png' %}" alt=""> Jane Smith</a>
+                                <a href="#" class="post-date"><img src="{% static 'main/img/core-img/calendar.png' %}" alt=""> April 26</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copywrite-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copywrite-content d-flex flex-wrap justify-content-between align-items-center">
+                        <!-- Footer Logo -->
+                        <a href="index.html" class="footer-logo"><img src="{%static 'main/img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by  Codebook.in<i class="fa fa-heart-o" aria-hidden="true"></i> 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="{% static 'main/js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{% static 'main/js/bootstrap/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{% static 'main/js/bootstrap/bootstrap.min.js' %}"></script>
+<!-- All Plugins js -->
+<script src="{% static 'main/js/plugins/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{% static 'main/js/active.js' %}"></script>
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+        title: "Success!",
+        text: "{{message}}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>swal({
+        title: "Warning :)",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+     
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>swal({
+        title: "info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+        title: "error :)",
+        text: "{{message}}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+
+</html>
